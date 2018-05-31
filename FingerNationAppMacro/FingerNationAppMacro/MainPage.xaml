@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:local="clr-namespace:AppBeacons"
+    x:Class="FingerNationAppMacro.MainPage">
+    <MasterDetailPage.Master>
+        <ContentPage Title="Menu" BackgroundColor="#212121">
+
+            <StackLayout  Spacing="15">
+                <Image Source="logo.png" WidthRequest="150" HeightRequest="150"/>
+                <StackLayout Orientation="Horizontal">
+                    <StackLayout HorizontalOptions="StartAndExpand">
+                        <Image Margin="10" Source="suberapido.png"></Image>
+                    </StackLayout>
+                    <StackLayout Margin="10" HorizontalOptions="EndAndExpand">
+                        <Label Text="Ganancia de peso rápido" FontSize="Large" FontAttributes="Bold" TextColor="White" ></Label>
+                        <Label Text="3900 Cal" FontSize="Medium" TextColor="Red"></Label>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="P:190" FontSize="Small" TextColor="White" HorizontalOptions="StartAndExpand"></Label>
+                            <Label Text="C:345" FontSize="Small" TextColor="White" HorizontalOptions="CenterAndExpand"></Label>
+                            <Label Text="G:80" FontSize="Small" TextColor="White" HorizontalOptions="EndAndExpand"></Label>
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+                <ListView x:Name="navigationDrawerList" RowHeight="50"  ItemSelected="OnMenuItemSelected">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <!-- Main design for our menu items -->
+                                <StackLayout VerticalOptions="FillAndExpand" Orientation="Horizontal">
+                                    <Image Margin="20,0,20,0" Source="{Binding Icon}" WidthRequest="40" HeightRequest="40" VerticalOptions="Center" />
+                                    <Label Text="{Binding Title}" FontSize="Medium" VerticalOptions="Center" TextColor="#eceff1" FontAttributes="Bold" />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ContentPage>
+    </MasterDetailPage.Master>
+    <MasterDetailPage.Detail>
+        <NavigationPage></NavigationPage>
+    </MasterDetailPage.Detail>
+</MasterDetailPage> 
