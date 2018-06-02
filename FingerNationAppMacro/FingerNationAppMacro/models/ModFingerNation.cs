@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SQLite;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,12 +7,14 @@ namespace FingerNationAppMacro.models
 {
     public class Categorias
     {
+        [PrimaryKey, AutoIncrement]
         public int id { get; set; }
         public int nombre { get; set; }
     }
 
-    public class Alimnetos
+    public class Alimentos
     {
+        [PrimaryKey, AutoIncrement]
         public int id { get; set; }
         public int categoria { get; set; }
         public string nombre { get; set; }
@@ -32,6 +35,8 @@ namespace FingerNationAppMacro.models
 
     public class Usuario
     {
+        [PrimaryKey, AutoIncrement]
+        public int id { get; set; }
         public string nombre { get; set; }
         public int edad { get; set; }
         public float altura { get; set; }
@@ -41,6 +46,7 @@ namespace FingerNationAppMacro.models
 
     public class Macronutrientes
     {
+        [PrimaryKey, AutoIncrement]
         public int id { get; set; }
         public string fecha { get; set; }
         public string meta { get; set; }
@@ -51,6 +57,7 @@ namespace FingerNationAppMacro.models
 
     public class Logros
     {
+        [PrimaryKey, AutoIncrement]
         public int id { get; set; }
         public float pesoComienzo { get; set; }
         public float pesoLogrado { get; set; }
@@ -59,6 +66,7 @@ namespace FingerNationAppMacro.models
 
     public class ConsumoDia
     {
+        [PrimaryKey, AutoIncrement]
         public int id { get; set; }
         public string fecha { get; set; }
         public float calorias { get; set; }
@@ -66,6 +74,7 @@ namespace FingerNationAppMacro.models
 
     public class ConteoConsumoDiaAlimento
     {
+        [PrimaryKey, AutoIncrement]
         public int id { get; set; }
         public int idDia { get; set; }
         public int idAlimento { get; set; }
