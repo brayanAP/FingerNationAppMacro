@@ -56,4 +56,19 @@ namespace FingerNationAppMacro.models
         public float pesoLogrado { get; set; }
         public string metaLograda { get; set; }
     }
+
+    public class ConsumoDia
+    {
+        public int id { get; set; }
+        public string fecha { get; set; }
+        public float calorias { get; set; }
+    }
+
+    public class ConteoConsumoDiaAlimento
+    {
+        public int id { get; set; }
+        public int idDia { get; set; }
+        public int idAlimento { get; set; }
+        public string comida { get; set; }
+    }
 }

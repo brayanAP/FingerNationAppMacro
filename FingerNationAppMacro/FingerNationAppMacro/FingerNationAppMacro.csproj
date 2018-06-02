@@ -5,6 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="sqlite-net-standard" Version="1.5.1" />
+    <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="16.1.0.37" />
     <PackageReference Include="Xamarin.Forms" Version="2.5.0.280555" />
   </ItemGroup>
 
@@ -18,7 +20,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="interfaces\" />
     <Folder Include="services\" />
   </ItemGroup>
 
