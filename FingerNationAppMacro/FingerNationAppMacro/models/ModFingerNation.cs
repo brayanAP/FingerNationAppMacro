@@ -9,7 +9,7 @@ namespace FingerNationAppMacro.models
     {
         [PrimaryKey, AutoIncrement]
         public int id { get; set; }
-        public int nombre { get; set; }
+        public string nombre { get; set; }
     }
 
     public class Alimentos

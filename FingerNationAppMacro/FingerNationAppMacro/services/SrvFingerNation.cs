@@ -34,6 +34,34 @@ namespace FingerNationAppMacro.services
                 await sqliteconnection.CreateTableAsync<Logros>(CreateFlags.None).ConfigureAwait(false);
                 await sqliteconnection.CreateTableAsync<ConsumoDia>(CreateFlags.None).ConfigureAwait(false);
                 await sqliteconnection.CreateTableAsync<ConteoConsumoDiaAlimento>(CreateFlags.None).ConfigureAwait(false);
+
+                var categorias = await GetAllCategorias();
+                if (categorias != null)
+                {
+                    List<Categorias> a = new List<Categorias>();
+                    Categorias ca = new Categorias();
+                    ca.nombre = "";
+                    a.Add(ca);
+                    ca.nombre = "";
+                    a.Add(ca);
+                    ca.nombre = "";
+                    a.Add(ca);
+                    ca.nombre = "";
+                    a.Add(ca);
+                    ca.nombre = "";
+                    a.Add(ca);
+                    ca.nombre = "";
+                    a.Add(ca);
+                    ca.nombre = "";
+                    a.Add(ca);
+                    ca.nombre = "";
+                    a.Add(ca);
+                    ca.nombre = "";
+                    a.Add(ca);
+                    ca.nombre = "";
+                    a.Add(ca);
+
+                }
             }
         }//CreateDataBaseAsync
 
@@ -290,7 +318,7 @@ namespace FingerNationAppMacro.services
             using (await aMutex.LockAsync().ConfigureAwait(false))
             {
                 var existingTodoItem = await sqliteconnection.Table<Categorias>()
-                        .Where(x => x.id == item.id)
+                        .Where(x => x.nombre == item.nombre)
                         .FirstOrDefaultAsync();
 
                 if (item == null)

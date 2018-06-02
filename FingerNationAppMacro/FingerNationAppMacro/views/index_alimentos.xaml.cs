@@ -1,5 +1,8 @@
-﻿using Syncfusion.ListView.XForms;
+﻿using FingerNationAppMacro.models;
+using FingerNationAppMacro.services;
+using Syncfusion.ListView.XForms;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -14,121 +17,40 @@ namespace FingerNationAppMacro.views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class index_alimentos : ContentPage
     {
-        ObservableCollection<tempAlimentos> listaEva = new ObservableCollection<tempAlimentos>()
-        {
-            new tempAlimentos
-            {
-                nombre = "Avena Quaker",
-                categoria = "Cereales"
-            },
-            new tempAlimentos
-            {
-                nombre = "Pechuga de pollo",
-                categoria = "Carnes"
-            },
-            new tempAlimentos
-            {
-                nombre = "Avena Quaker",
-                categoria = "Cereales"
-            },
-            new tempAlimentos
-            {
-                nombre = "Avena Quaker",
-                categoria = "Cereales"
-            },
-            new tempAlimentos
-            {
-                nombre = "Avena Quaker",
-                categoria = "Cereales"
-            },
-            new tempAlimentos
-            {
-                nombre = "Avena Quaker",
-                categoria = "Cereales"
-            },
-            new tempAlimentos
-            {
-                nombre = "Avena Quaker",
-                categoria = "Cereales"
-            },
-            new tempAlimentos
-            {
-                nombre = "Avena Quaker",
-                categoria = "Cereales"
-            },
-            new tempAlimentos
-            {
-                nombre = "Avena Quaker",
-                categoria = "Cereales"
-            },
-            new tempAlimentos
-            {
-                nombre = "Avena Quaker",
-                categoria = "Cereales"
-            },
-            new tempAlimentos
-            {
-                nombre = "Avena Quaker",
-                categoria = "Cereales"
-            },
-            new tempAlimentos
-            {
-                nombre = "Avena Quaker",
-                categoria = "Cereales"
-            },
-            new tempAlimentos
-            {
-                nombre = "Galleta Maria",
-                categoria = "Cereales"
-            },
-            new tempAlimentos
-            {
-                nombre = "Avena Quaker",
-                categoria = "Cereales"
-            },
-            new tempAlimentos
-            {
-                nombre = "Avena Quaker",
-                categoria = "Cereales"
-            },
-            new tempAlimentos
-            {
-                nombre = "Galleta Oreo",
-                categoria = "Cereales"
-            },
-            new tempAlimentos
-            {
-                nombre = "Avena Quaker",
-                categoria = "Cereales"
-            },
-            new tempAlimentos
-            {
-                nombre = "Avena Quaker",
-                categoria = "Perro"
-            },
-            new tempAlimentos
-            {
-                nombre = "Avena Quaker",
-                categoria = "Gato"
-            },
-            new tempAlimentos
-            {
-                nombre = "Avena Quaker",
-                categoria = "Cereales"
-            }
-        };
 
-       
+        ObservableCollection<tempAlimentos> listaAli;
+
+        public async void getAlimentos()
+        {
+            SrvFingerNation a = new SrvFingerNation();
+            var lista = await a.GetAllAlimentos();
+            
+            if(lista!= null)
+            {
+                foreach (Alimentos alimento in lista)
+                {
+                    tempAlimentos tla = new tempAlimentos();
+                    tla.nombre = alimento.nombre;
+                    var tc = await a.GetIdCategorias(alimento.categoria);
+                    tla.categoria = tc.nombre;
+
+                    listaAli.Add(tla);
+                }
+            }
+        }//getAllAli
+
 
         public index_alimentos()
         {
             InitializeComponent();
+            listaAli = new ObservableCollection<tempAlimentos>();
 
         }
 
         protected async override void OnAppearing()
         {
-            listView.ItemsSource = listaEva;
+            getAlimentos();
+            listView.ItemsSource = listaAli;
         }
 
         SearchBar searchBar = null;
