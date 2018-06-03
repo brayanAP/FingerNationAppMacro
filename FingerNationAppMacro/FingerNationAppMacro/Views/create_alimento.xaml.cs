@@ -21,15 +21,22 @@ namespace FingerNationAppMacro.views
 	public partial class create_alimento : ContentPage
 	{
         
-		public  create_alimento()
+		public  create_alimento(Alimentos a)
 		{
 			InitializeComponent ();
-           // guardaCategorias();
+            // guardaCategorias();
+
+            BindingContext = a;
 
 
         }
 
-        
+        public create_alimento()
+        {
+            InitializeComponent();
+
+        }
+
 
         protected async override void OnAppearing()
         {
@@ -53,8 +60,6 @@ namespace FingerNationAppMacro.views
             listumd.Add("ml");
             listumd.Add("gr");
             pickerumd.ItemsSource = listumd;
-
-
         }
 
     }

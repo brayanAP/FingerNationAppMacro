@@ -115,6 +115,12 @@
     <AndroidResource Include="Assets\subelento.png" />
     <AndroidResource Include="Assets\suberapido.png" />
     <AndroidResource Include="Assets\home.png" />
+    <AndroidResource Include="Assets\cancel.png" />
+    <AndroidResource Include="Assets\borrar.png" />
+    <AndroidResource Include="Assets\guardar.png" />
+    <AndroidResource Include="cancel.png" />
+    <AndroidResource Include="borrar.png" />
+    <AndroidResource Include="guardar.png" />
     <Content Include="logo.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-100.png" />

@@ -7,7 +7,7 @@
         <ScrollView>
             <StackLayout Margin="20">
                 <Label Text="Categoria:" />
-                <Picker x:Name="pickercategoria"/>
+                <Picker x:Name="pickercategoria" SelectedItem="{Binding Item.categoria}"/>
                 
                 <Label Text="Nombre:" />
                 <Entry Text="{Binding Item.nombre}"/>
@@ -22,7 +22,7 @@
                 <Entry Text="{Binding Item.cantidad}"/>
 
                 <Label Text="Unidad de medida:" />
-                <Picker x:Name="pickerumd"/>
+                <Picker x:Name="pickerumd" SelectedItem="{Binding Item.unidadmedida}"/>
 
                 <Label Text="Carbohidratos:" />
                 <Entry Text="{Binding Item.carbohidratos}"/>
@@ -52,9 +52,9 @@
                 <Entry Text="{Binding Item.sodio}"/>
 
                 <StackLayout Orientation="Horizontal">
-                    <Button Text="Guardar" HorizontalOptions="StartAndExpand"/>
-                    <Button Text="Eliminar" HorizontalOptions="CenterAndExpand"/>
-                    <Button Text="Cancelar" HorizontalOptions="EndAndExpand"/>
+                    <Button Image="guardar.png" Text="Guardar" HorizontalOptions="StartAndExpand"/>
+                    <Button Image="borrar.png" Text="Eliminar" HorizontalOptions="CenterAndExpand"/>
+                    <Button Image="cancels.png" Text="Cancelar" HorizontalOptions="EndAndExpand"/>
 
                 </StackLayout>
             </StackLayout>

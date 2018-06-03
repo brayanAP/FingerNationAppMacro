@@ -159,4 +159,13 @@
   <ItemGroup>
     <AndroidResource Include="Resources\home.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\cancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\borrar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\guardar.png" />
+  </ItemGroup>
 </Project>

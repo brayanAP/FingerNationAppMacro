@@ -31,9 +31,7 @@ namespace FingerNationAppMacro.views
                 {
                     tempAlimentos tla = new tempAlimentos();
                     tla.nombre = alimento.nombre;
-                    var tc = await a.GetIdCategorias(alimento.categoria);
-                    tla.categoria = tc.nombre;
-
+                    tla.categoria = alimento.categoria;
                     listaAli.Add(tla);
                 }
             }
