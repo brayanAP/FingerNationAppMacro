@@ -7,6 +7,7 @@
   <ItemGroup>
     <PackageReference Include="sqlite-net-standard" Version="1.5.1" />
     <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="16.1.0.37" />
+    <PackageReference Include="Syncfusion.Xamarin.SfPicker" Version="16.1.0.37" />
     <PackageReference Include="Xamarin.Forms" Version="2.5.0.280555" />
   </ItemGroup>
 
@@ -17,22 +18,25 @@
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="MainPage.xaml.cs">
       <DependentUpon>*.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\create_alimento.xaml.cs">
+      <DependentUpon>create_alimento.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="views\index.xaml">
+    <EmbeddedResource Update="Views\index.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="views\index_alimentos.xaml">
+    <EmbeddedResource Update="Views\index_alimentos.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="views\index_calculadora.xaml">
+    <EmbeddedResource Update="Views\index_calculadora.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="views\index_configuracion.xaml">
+    <EmbeddedResource Update="Views\index_configuracion.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="views\index_logros.xaml">
+    <EmbeddedResource Update="Views\index_logros.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

@@ -44,7 +44,6 @@ namespace FingerNationAppMacro.views
         {
             InitializeComponent();
             listaAli = new ObservableCollection<tempAlimentos>();
-
         }
 
         protected async override void OnAppearing()

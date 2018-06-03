@@ -16,7 +16,7 @@ namespace FingerNationAppMacro.models
     {
         [PrimaryKey, AutoIncrement]
         public int id { get; set; }
-        public int categoria { get; set; }
+        public string categoria { get; set; }
         public string nombre { get; set; }
         public float calorias { get; set; }
         public string marca { get; set; }

@@ -50,6 +50,12 @@ namespace FingerNationAppMacro
              Title = "Configuración",
                 Icon = "configuracion.png",
                 TargetType = typeof(views.index_configuracion)
+        });
+            menuList.Add(new MasterPageItem()
+            {
+                Title = "CREATE ALIMENTO",
+                Icon = "configuracion.png",
+                TargetType = typeof(views.create_alimento)
             });
 
             // Setting our list to be ItemSource for ListView in MainPage.xaml  

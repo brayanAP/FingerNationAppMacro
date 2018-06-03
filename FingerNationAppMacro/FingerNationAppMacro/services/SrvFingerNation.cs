@@ -35,33 +35,10 @@ namespace FingerNationAppMacro.services
                 await sqliteconnection.CreateTableAsync<ConsumoDia>(CreateFlags.None).ConfigureAwait(false);
                 await sqliteconnection.CreateTableAsync<ConteoConsumoDiaAlimento>(CreateFlags.None).ConfigureAwait(false);
 
-                var categorias = await GetAllCategorias();
-                if (categorias != null)
-                {
-                    List<Categorias> a = new List<Categorias>();
-                    Categorias ca = new Categorias();
-                    ca.nombre = "";
-                    a.Add(ca);
-                    ca.nombre = "";
-                    a.Add(ca);
-                    ca.nombre = "";
-                    a.Add(ca);
-                    ca.nombre = "";
-                    a.Add(ca);
-                    ca.nombre = "";
-                    a.Add(ca);
-                    ca.nombre = "";
-                    a.Add(ca);
-                    ca.nombre = "";
-                    a.Add(ca);
-                    ca.nombre = "";
-                    a.Add(ca);
-                    ca.nombre = "";
-                    a.Add(ca);
-                    ca.nombre = "";
-                    a.Add(ca);
+                    
 
-                }
+
+                
             }
         }//CreateDataBaseAsync
 

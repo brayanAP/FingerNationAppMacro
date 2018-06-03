@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
+             x:Class="FingerNationAppMacro.views.create_alimento">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="20">
+                <Label Text="Categoria:" />
+                <Picker x:Name="pickercategoria"/>
+                
+                <Label Text="Nombre:" />
+                <Entry Text="{Binding Item.nombre}"/>
+
+                <Label Text="Calorías:" />
+                <Entry Text="{Binding Item.calorias}"/>
+
+                <Label Text="Marca:" />
+                <Entry Text="{Binding Item.marca}"/>
+
+                <Label Text="Cantidad:" />
+                <Entry Text="{Binding Item.cantidad}"/>
+
+                <Label Text="Unidad de medida:" />
+                <Picker x:Name="pickerumd"/>
+
+                <Label Text="Carbohidratos:" />
+                <Entry Text="{Binding Item.carbohidratos}"/>
+
+                <Label Text="Fibra:" />
+                <Entry Text="{Binding Item.fibra}"/>
+
+                <Label Text="Azúcar:" />
+                <Entry Text="{Binding Item.azucar}"/>
+
+                <Label Text="Proteínas:" />
+                <Entry Text="{Binding Item.proteinas}"/>
+
+                <Label Text="Grasas:" />
+                <Entry Text="{Binding Item.grasas}"/>
+
+                <Label Text="Monoinsaturadas:" />
+                <Entry Text="{Binding Item.monoinsaturadas}"/>
+
+                <Label Text="Poliinsaturada:" />
+                <Entry Text="{Binding Item.poliinsaturadas}"/>
+
+                <Label Text="Saturadas:" />
+                <Entry Text="{Binding Item.saturadas}"/>
+
+                <Label Text="Sodio:" />
+                <Entry Text="{Binding Item.sodio}"/>
+
+                <StackLayout Orientation="Horizontal">
+                    <Button Text="Guardar" HorizontalOptions="StartAndExpand"/>
+                    <Button Text="Eliminar" HorizontalOptions="CenterAndExpand"/>
+                    <Button Text="Cancelar" HorizontalOptions="EndAndExpand"/>
+
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+       
+    </ContentPage.Content>
+</ContentPage>
