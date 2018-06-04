@@ -3,9 +3,32 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FingerNationAppMacro.views.index_calculadora">
     <ContentPage.Content>
-        <StackLayout Margin="20" Orientation="Vertical">
+        <StackLayout Margin="20">
             <Image Source="mantener.png" HeightRequest="250"></Image>
-            <Label Text="■■ MANTENER TU PESO ACTUAL ■■" FontSize="Large" FontAttributes="Bold" TextColor="Black" VerticalTextAlignment="Center"></Label>
+            <Label Text="■■ MANTENER TU PESO ACTUAL ■■" FontSize="Large" FontAttributes="Bold" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalTextAlignment="Center"></Label>
+
+            <StackLayout Margin="20">
+                <Label Text="3000cal" FontSize="150" TextColor="Red" FontAttributes="Bold"  HorizontalOptions="CenterAndExpand"></Label>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <StackLayout HorizontalOptions="StartAndExpand">
+                    <Image Source="proteinas.png" WidthRequest="100" HeightRequest="100"></Image>
+                    <Label Text="200gr" FontSize="Large" FontAttributes="Bold" TextColor="Black" HorizontalOptions="CenterAndExpand"></Label>
+                </StackLayout>
+                <StackLayout HorizontalOptions="CenterAndExpand">
+                    <Image Source="carbohidratos.png" WidthRequest="100" HeightRequest="100"></Image>
+                    <Label Text="200gr" FontSize="Large" FontAttributes="Bold" TextColor="Black" HorizontalOptions="CenterAndExpand"></Label>
+                </StackLayout>
+                <StackLayout HorizontalOptions="EndAndExpand">
+                    <Image Source="grasas.png" WidthRequest="100" HeightRequest="100"></Image>
+                    <Label Text="200gr" FontSize="Large" FontAttributes="Bold" TextColor="Black" HorizontalOptions="CenterAndExpand"></Label>
+                </StackLayout>
+            </StackLayout>
+
+            <Button Text="RECALCULAR" FontAttributes="Bold" Clicked="Create" FontSize="Large" BackgroundColor="#212121" TextColor="White" HeightRequest="60"></Button>
         </StackLayout>
+
+        
     </ContentPage.Content>
 </ContentPage>

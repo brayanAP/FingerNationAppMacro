@@ -18,6 +18,14 @@ namespace FingerNationAppMacro.views
 			InitializeComponent ();
 		}
 
-        
+        public void Create(object sender, EventArgs e)
+        {
+            MainPage mp = new MainPage();
+            Type page = typeof(create_macros);
+            mp.Detail = new NavigationPage((Page)Activator.CreateInstance(page));
+            mp.IsPresented = false;
+            App.Current.MainPage = mp;
+
+        }//GUARDAR ALIMENTO
     }
 }

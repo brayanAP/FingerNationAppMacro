@@ -19,8 +19,9 @@
                 <Label Text="Nivel de Actividad:"></Label>
                 <Picker x:Name="pickeractividad"/>
 
-                <StackLayout >
-                    <Button Text="Calcular" WidthRequest="150" Image="calculadora.png" BackgroundColor="#212121" TextColor="White" FontAttributes="Bold" FontSize="Large" VerticalOptions="Center"/>
+                <StackLayout Orientation="Horizontal">
+                    <Button Text="Calcular"  Image="calculadora.png" BackgroundColor="#212121" TextColor="White" FontAttributes="Bold" FontSize="Large" />
+                    <Button Text="Cancelar"  Image="cancel.png" BackgroundColor="#212121" TextColor="White" FontAttributes="Bold" FontSize="Large"/>
                 </StackLayout>
 
             </StackLayout>
