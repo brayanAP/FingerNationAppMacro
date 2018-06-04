@@ -18,6 +18,9 @@
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="MainPage.xaml.cs">
       <DependentUpon>*.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\create_macros.xaml.cs">
+      <DependentUpon>create_macros.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\create_alimento.xaml.cs">
       <DependentUpon>create_alimento.xaml</DependentUpon>
     </Compile>

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
+             x:Class="FingerNationAppMacro.views.create_macros">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="20" Orientation="Vertical">
+                <Label Text="Edad:"></Label>
+                <Entry Keyboard="Numeric"></Entry>
+                <Label Text="Peso:"></Label>
+                <Entry Keyboard="Numeric"></Entry>
+                <Label Text="Estatura:"></Label>
+                <Entry Keyboard="Numeric"></Entry>
+                <Label Text="Sexo:"></Label>
+                <Picker x:Name="pickersexo"/>
+                <Label Text="Dieta Objetivo:"></Label>
+                <Picker x:Name="pickerobjetivo"/>
+                <Label Text="Nivel de Actividad:"></Label>
+                <Picker x:Name="pickeractividad"/>
+
+                <StackLayout >
+                    <Button Text="Calcular" WidthRequest="150" Image="calculadora.png" BackgroundColor="#212121" TextColor="White" FontAttributes="Bold" FontSize="Large" VerticalOptions="Center"/>
+                </StackLayout>
+
+            </StackLayout>
+        </ScrollView>
+       
+    </ContentPage.Content>
+</ContentPage>

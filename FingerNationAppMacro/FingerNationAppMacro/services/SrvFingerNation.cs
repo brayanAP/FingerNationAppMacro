@@ -35,12 +35,38 @@ namespace FingerNationAppMacro.services
                 await sqliteconnection.CreateTableAsync<ConsumoDia>(CreateFlags.None).ConfigureAwait(false);
                 await sqliteconnection.CreateTableAsync<ConteoConsumoDiaAlimento>(CreateFlags.None).ConfigureAwait(false);
 
-                    
 
+                var items = new Alimentos();
 
+                    var query = (from p in sqliteconnection.Table<Alimentos>()
+                                 where p.id == 1
+                                 select p);
+
+                    items = await query.FirstAsync();
+
+                if (items == null)
+                {
+                    Macronutrientes macros = new Macronutrientes()
+                    {
+                        id = 1,
+                        fecha = toTime().ToString(),
+                        meta = "none",
+                        proteinas = 0,
+                        carbohidratos = 0,
+                        grasas = 0
+                    };
+
+                    await sqliteconnection.InsertAsync(macros);
+                }
                 
             }
         }//CreateDataBaseAsync
+
+        private DateTime toTime()
+        {
+            return new DateTime().ToLocalTime();
+        }
+
 
         #region DELETE
 
@@ -384,22 +410,8 @@ namespace FingerNationAppMacro.services
 
         public async Task InsertMacronutrientes(Macronutrientes item)
         {
-            using (await aMutex.LockAsync().ConfigureAwait(false))
-            {
-                var existingTodoItem = await sqliteconnection.Table<Macronutrientes>()
-                        .Where(x => x.id == item.id)
-                        .FirstOrDefaultAsync();
-
-                if (item == null)
-                {
-                    await sqliteconnection.InsertAsync(item).ConfigureAwait(false);
-                }
-                else
-                {
-                    item.id = item.id;
-                    await sqliteconnection.UpdateAsync(item).ConfigureAwait(false);
-                }
-            }
+            item.id = 1;
+            await sqliteconnection.UpdateAsync(item).ConfigureAwait(false);
         }
 
         public async Task InsertUsuario(Usuario item)

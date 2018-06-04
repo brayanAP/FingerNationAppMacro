@@ -17,10 +17,26 @@ namespace FingerNationAppMacro.views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class create_alimento : ContentPage
 	{
-        
-		public  create_alimento(Alimentos a)
-		{
-			InitializeComponent ();
+        Alimentos alGlobal;
+        public create_alimento(Alimentos a)
+        {
+            InitializeComponent();
+            alGlobal = a;
+            nombre.Text = a.nombre;
+            calorias.Text = a.calorias + "";
+            marca.Text = a.marca;
+            cantidad.Text = a.cantidad + "";
+            carbohidratos.Text = a.carbohidratos + "";
+            fibra.Text = a.fibra + "";
+            azucar.Text = a.azucar + "";
+            proteinas.Text = a.proteinas + "";
+            grasas.Text = a.grasas + "";
+            monoinsaturadas.Text = a.monoinsaturadas + "";
+            poliinsaturadas.Text = a.poliinsaturadas + "";
+            saturadas.Text = a.saturadas+"";
+            sodio.Text = a.sodio+"";
+            pickercategoria.SelectedItem = a.categoria;
+            pickerumd.SelectedItem = a.unidadmedida;
 
         }
 
@@ -107,8 +123,45 @@ namespace FingerNationAppMacro.views
         public void btn_ClickedSave(object sender, EventArgs e)
         {
             guardarAlimento();
-            
+            MainPage mp = new MainPage();
+            Type page = typeof(index_alimentos);
+            mp.Detail = new NavigationPage((Page)Activator.CreateInstance(page));
+            mp.IsPresented = false;
+            App.Current.MainPage = mp;
+
         }//GUARDAR ALIMENTO
 
+
+        public void Cancel(object sender, EventArgs e)
+        {
+            MainPage mp = new MainPage();
+            Type page = typeof(index_alimentos);
+            mp.Detail = new NavigationPage((Page)Activator.CreateInstance(page));
+            mp.IsPresented = false;
+            App.Current.MainPage = mp;
+
+        }//GUARDAR ALIMENTO
+
+
+        private async void Delete(object sender, EventArgs e)
+        {
+            Alimentos a = alGlobal;
+                SrvFingerNation sr = new SrvFingerNation();
+                var lista = await sr.GetAllAlimentos();
+
+                foreach (Alimentos alimento in lista)
+                {
+                    if (alimento.nombre == a.nombre)
+                    {
+                        await sr.DeleteAlimentos(alimento);
+                        MainPage mp = new MainPage();
+                        Type page = typeof(index_alimentos);
+                        mp.Detail = new NavigationPage((Page)Activator.CreateInstance(page));
+                        mp.IsPresented = false;
+                        App.Current.MainPage = mp;
+                    }
+                }
+            
+        }
     }
 }

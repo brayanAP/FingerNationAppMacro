@@ -30,7 +30,7 @@ namespace FingerNationAppMacro.models
         public float poliinsaturadas { get; set; }
         public float saturadas { get; set; }
         public float sodio { get; set; }
-    }
+    } 
 
     public class Usuario
     {

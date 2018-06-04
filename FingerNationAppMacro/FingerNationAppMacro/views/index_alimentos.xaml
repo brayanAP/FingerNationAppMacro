@@ -7,14 +7,14 @@
         <StackLayout>
             <StackLayout Orientation="Horizontal" Margin="20">
                 <Label HorizontalOptions="StartAndExpand" Text="Mis Alimentos" FontSize="60" TextColor="Black"></Label>
-                <Button Image="add.png" HorizontalOptions="EndAndExpand" Text="Agregar" BackgroundColor="Red" TextColor="White" FontAttributes="Bold" FontSize="Medium"></Button>
+                <Button Image="add.png" Clicked="goCreateAlimentoInsert" HorizontalOptions="EndAndExpand" Text="Agregar" BackgroundColor="Red" TextColor="White" FontAttributes="Bold" FontSize="Medium"></Button>
             </StackLayout>
             <StackLayout>
                 <SearchBar x:Name="filterText" HeightRequest="40" 
            Placeholder="Search here to filter"
            TextChanged="OnFilterTextChanged" Grid.Row="0"/>     
                 <ScrollView>
-                    <syncfusion:SfListView x:Name="listView" Margin="20">
+                    <syncfusion:SfListView x:Name="listView"  Margin="20">
                         <syncfusion:SfListView.ItemTemplate>
                             <DataTemplate >
                                 <Grid>
@@ -34,8 +34,8 @@
                 </ScrollView>
             </StackLayout>
             <StackLayout Orientation="Horizontal" Margin="20" HorizontalOptions="End">
-                <Button Image="edit.png" BackgroundColor="#212121"></Button>
-                <Button Image="delete.png" BackgroundColor="#212121"></Button>
+                <Button Image="edit.png" BackgroundColor="#212121" Clicked="Edit"></Button>
+                <Button Image="delete.png" BackgroundColor="#212121" Clicked="Delete"></Button>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

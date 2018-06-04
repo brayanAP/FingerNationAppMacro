@@ -53,8 +53,8 @@
 
                 <StackLayout Orientation="Horizontal">
                     <Button Image="guardar.png" Text="Guardar" Clicked="btn_ClickedSave" HorizontalOptions="StartAndExpand" BackgroundColor="#212121" TextColor="White"/>
-                    <Button Image="borrar.png" Text="Eliminar" HorizontalOptions="CenterAndExpand" BackgroundColor="#212121" TextColor="White"/>
-                    <Button Image="cancel.png" Text="Cancelar" HorizontalOptions="EndAndExpand" BackgroundColor="#212121" TextColor="White"/>
+                    <Button Image="borrar.png" Text="Eliminar" Clicked="Delete" HorizontalOptions="CenterAndExpand" BackgroundColor="#212121" TextColor="White"/>
+                    <Button Image="cancel.png" Text="Cancelar" HorizontalOptions="EndAndExpand" BackgroundColor="#212121" Clicked="Cancel"  TextColor="White"/>
 
                 </StackLayout>
             </StackLayout>

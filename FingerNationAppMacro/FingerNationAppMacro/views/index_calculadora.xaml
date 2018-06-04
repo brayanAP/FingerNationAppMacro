@@ -3,10 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FingerNationAppMacro.views.index_calculadora">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Margin="20" Orientation="Vertical">
+            <Image Source="mantener.png" HeightRequest="250"></Image>
+            <Label Text="■■ MANTENER TU PESO ACTUAL ■■" FontSize="Large" FontAttributes="Bold" TextColor="Black" VerticalTextAlignment="Center"></Label>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
