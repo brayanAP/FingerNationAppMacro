@@ -270,24 +270,36 @@ namespace FingerNationAppMacro.services
 
         #region INSERT
 
+        public async Task DropTableAlimentos()
+        {
+            await sqliteconnection.DropTableAsync<Alimentos>();
+        }
         public async Task InsertAlimentos(Alimentos item)
         {
-            using (await aMutex.LockAsync().ConfigureAwait(false))
-            {
-                var existingTodoItem = await sqliteconnection.Table<Alimentos>()
-                        .Where(x => x.id == item.id)
-                        .FirstOrDefaultAsync();
+          
+            bool insertado = true;
+            var lista = await sqliteconnection.Table<Alimentos>().ToListAsync().ConfigureAwait(false);
+            var it = new Alimentos();
 
-                if (item == null)
+                foreach(Alimentos a in lista)
+                {
+                    if (a.nombre == item.nombre)
+                    {
+                        insertado = false;
+                        it = a;
+                    }
+                }
+
+                if (insertado)
                 {
                     await sqliteconnection.InsertAsync(item).ConfigureAwait(false);
                 }
                 else
                 {
-                    item.id = item.id;
+                    item.id = it.id;
                     await sqliteconnection.UpdateAsync(item).ConfigureAwait(false);
                 }
-            }
+            
         }
             
         public async Task InsertCategorias(Categorias item)
