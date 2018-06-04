@@ -1,6 +1,5 @@
 ﻿using SQLite;
 using System;
-using System.Collections.Generic;
 using System.Text;
 
 namespace FingerNationAppMacro.models
@@ -21,7 +20,7 @@ namespace FingerNationAppMacro.models
         public float calorias { get; set; }
         public string marca { get; set; }
         public int cantidad { get; set; }
-        public string unidadmedida { get; set; } //ml o gr
+        public string unidadmedida { get; set; }
         public float carbohidratos { get; set; }
         public float fibra { get; set; }
         public float azucar { get; set; }
@@ -41,7 +40,7 @@ namespace FingerNationAppMacro.models
         public int edad { get; set; }
         public float altura { get; set; }
         public float peso { get; set; }
-        public char sexo { get; set; }
+        public string sexo { get; set; }
     }
 
     public class Macronutrientes

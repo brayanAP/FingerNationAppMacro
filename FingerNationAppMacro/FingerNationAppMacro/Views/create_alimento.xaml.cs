@@ -12,10 +12,7 @@ using Xamarin.Forms.Xaml;
 
 namespace FingerNationAppMacro.views
 {
-    public class Medidas
-    {
-        public string unidadmedida { get; set; }
-    }
+   
 
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class create_alimento : ContentPage
@@ -24,10 +21,6 @@ namespace FingerNationAppMacro.views
 		public  create_alimento(Alimentos a)
 		{
 			InitializeComponent ();
-            // guardaCategorias();
-
-            BindingContext = a;
-
 
         }
 
@@ -61,6 +54,43 @@ namespace FingerNationAppMacro.views
             listumd.Add("gr");
             pickerumd.ItemsSource = listumd;
         }
+
+        public async void guardarAlimento()
+        {
+            SrvFingerNation srv = new SrvFingerNation();
+            Alimentos alimento = new Alimentos();
+            alimento.categoria = pickercategoria.SelectedItem.ToString();
+            alimento.nombre = nombre.Text.ToString();
+            alimento.calorias = float.Parse(calorias.Text.ToString());
+            alimento.marca = marca.Text.ToString();
+            alimento.cantidad = Int32.Parse(cantidad.Text.ToString());
+            alimento.unidadmedida = pickerumd.SelectedItem.ToString();
+            alimento.carbohidratos = float.Parse(carbohidratos.Text.ToString());
+            alimento.fibra = float.Parse(fibra.Text.ToString());
+            alimento.azucar = float.Parse(azucar.Text.ToString());
+            alimento.proteinas = float.Parse(proteinas.Text.ToString());
+            alimento.grasas = float.Parse(grasas.Text.ToString());
+            alimento.monoinsaturadas = float.Parse(monoinsaturadas.Text.ToString());
+            alimento.poliinsaturadas = float.Parse(poliinsaturadas.Text.ToString());
+            alimento.saturadas = float.Parse(saturadas.Text.ToString());
+            alimento.sodio = float.Parse(sodio.Text.ToString());
+
+            await srv.InsertAlimentos(alimento);
+        
+        }
+
+
+        public void btn_ClickedSave(object sender, EventArgs e)
+        {
+            guardarAlimento();
+
+
+            MainPage mp = new MainPage();
+
+            Type page = typeof(index_alimentos);
+            mp.Detail = new NavigationPage((Page)Activator.CreateInstance(page));
+            mp.IsPresented = false;
+        }//GUARDAR ALIMENTO
 
     }
 }

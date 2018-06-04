@@ -10,49 +10,49 @@
                 <Picker x:Name="pickercategoria" SelectedItem="{Binding Item.categoria}"/>
                 
                 <Label Text="Nombre:" />
-                <Entry Text="{Binding Item.nombre}"/>
+                <Entry x:Name="nombre" Text="{Binding Item.nombre}"/>
 
                 <Label Text="Calorías:" />
-                <Entry Text="{Binding Item.calorias}"  Keyboard="Numeric"/>
+                <Entry x:Name="calorias" Text="{Binding Item.calorias}"  Keyboard="Numeric"/>
 
                 <Label Text="Marca:" />
-                <Entry Text="{Binding Item.marca}"/>
+                <Entry x:Name="marca" Text="{Binding Item.marca}"/>
 
                 <Label Text="Cantidad:" />
-                <Entry Text="{Binding Item.cantidad}"  Keyboard="Numeric"/>
+                <Entry x:Name="cantidad" Text="{Binding Item.cantidad}"  Keyboard="Numeric"/>
 
                 <Label Text="Unidad de medida:" />
                 <Picker x:Name="pickerumd" SelectedItem="{Binding Item.unidadmedida}"/>
 
                 <Label Text="Carbohidratos:" />
-                <Entry Text="{Binding Item.carbohidratos}"  Keyboard="Numeric"/>
+                <Entry x:Name="carbohidratos" Text="{Binding Item.carbohidratos}"  Keyboard="Numeric"/>
 
                 <Label Text="Fibra:" />
-                <Entry Text="{Binding Item.fibra}"  Keyboard="Numeric"/>
+                <Entry x:Name="fibra" Text="{Binding Item.fibra}"  Keyboard="Numeric"/>
 
                 <Label Text="Azúcar:" />
-                <Entry Text="{Binding Item.azucar}"  Keyboard="Numeric"/>
+                <Entry x:Name="azucar" Text="{Binding Item.azucar}"  Keyboard="Numeric"/>
 
                 <Label Text="Proteínas:" />
-                <Entry Text="{Binding Item.proteinas}"  Keyboard="Numeric"/>
+                <Entry x:Name="proteinas" Text="{Binding Item.proteinas}"  Keyboard="Numeric"/>
 
                 <Label Text="Grasas:" />
-                <Entry Text="{Binding Item.grasas}"  Keyboard="Numeric"/>
+                <Entry x:Name="grasas" Text="{Binding Item.grasas}"  Keyboard="Numeric"/>
 
                 <Label Text="Monoinsaturadas:" />
-                <Entry Text="{Binding Item.monoinsaturadas}"  Keyboard="Numeric"/>
+                <Entry x:Name="monoinsaturadas" Text="{Binding Item.monoinsaturadas}"  Keyboard="Numeric"/>
 
                 <Label Text="Poliinsaturada:" />
-                <Entry Text="{Binding Item.poliinsaturadas}"  Keyboard="Numeric"/>
+                <Entry x:Name="poliinsaturadas" Text="{Binding Item.poliinsaturadas}"  Keyboard="Numeric"/>
 
                 <Label Text="Saturadas:" />
-                <Entry Text="{Binding Item.saturadas}"  Keyboard="Numeric"/>
+                <Entry x:Name="saturadas" Text="{Binding Item.saturadas}"  Keyboard="Numeric"/>
 
                 <Label Text="Sodio:" />
-                <Entry Text="{Binding Item.sodio}"  Keyboard="Numeric"/>
+                <Entry x:Name="sodio" Text="{Binding Item.sodio}"  Keyboard="Numeric"/>
 
                 <StackLayout Orientation="Horizontal">
-                    <Button Image="guardar.png" Text="Guardar" HorizontalOptions="StartAndExpand" BackgroundColor="#212121" TextColor="White"/>
+                    <Button Image="guardar.png" Text="Guardar" Clicked="btn_ClickedSave" HorizontalOptions="StartAndExpand" BackgroundColor="#212121" TextColor="White"/>
                     <Button Image="borrar.png" Text="Eliminar" HorizontalOptions="CenterAndExpand" BackgroundColor="#212121" TextColor="White"/>
                     <Button Image="cancel.png" Text="Cancelar" HorizontalOptions="EndAndExpand" BackgroundColor="#212121" TextColor="White"/>
 
