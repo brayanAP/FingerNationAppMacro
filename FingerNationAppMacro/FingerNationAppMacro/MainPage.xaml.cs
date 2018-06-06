@@ -50,6 +50,7 @@ namespace FingerNationAppMacro
              Title = "Configuración",
                 Icon = "configuracion.png",
                 TargetType = typeof(views.index_configuracion)
+            
         });
 
             // Setting our list to be ItemSource for ListView in MainPage.xaml  

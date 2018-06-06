@@ -26,43 +26,76 @@ namespace FingerNationAppMacro.views
 
         public async void getUsuario()
         {
-            SrvFingerNation srv = new SrvFingerNation();
-            var temp = await srv.GetAllUsuario();
-
-            if(temp!= null)
+            try
             {
-                foreach (Usuario u in temp)
-                {
-                    if (u.nombre == "BRAYAN ULISSES ARIAS PEREZ")
-                    {
-                        usuario = new Usuario()
-                        {
-                            id = u.id,
-                            nombre = u.nombre,
-                            edad = u.edad,
-                            peso = u.peso,
-                            altura = u.altura,
-                            sexo = u.sexo
+                SrvFingerNation srv = new SrvFingerNation();
+                var temp = await srv.GetAllUsuario();
+                //await DisplayAlert("OK", user.nombre, "OK");
 
-                        };
+            
+            
+            if(temp.Count != 0)
+            {
+                    
+                    
+                    foreach (Usuario u in temp)
+                    {
+                        if (u.nombre == "BRAYAN ULISSES ARIAS PEREZ")
+                        {
+                            usuario = new Usuario()
+                            {
+                                id = u.id,
+                                nombre = u.nombre,
+                                edad = u.edad,
+                                peso = u.peso,
+                                altura = u.altura,
+                                sexo = u.sexo
+
+                            };
+                            //await DisplayAlert("OK",usuario.id.ToString(),"ok");
+                            edad.Text = usuario.edad.ToString();
+                            peso.Text = usuario.peso.ToString();
+                            altura.Text = usuario.altura.ToString();
+
+                        }
+                        else {
+                            await DisplayAlert("ok","nuestros datos no coinciden habla a soporte","ok");
+                        }
                     }
                 }
-            }
             else
             {
                 await DisplayAlert("ERROR", "USURIO NO ENCONTRADO", "OK");
             }
-            
-            
+            }
+            catch (Exception e)
+            {
+                await DisplayAlert("OK", e.Message, "OK");
+            }
+
         }
 
         protected async override void OnAppearing()
         {
             /*
-                        */
-            getUsuario();
+            
+            
+            Usuario user = new Usuario();
+            user.id = 3;
+            user.nombre = "Edgar Eduardo Nuñez Gonzalez";
+            user.edad = 21;
+            user.altura = 45;
+            user.peso = 46;
+            user.sexo = "M";
+            await srv.DeleteUsuario(user);
+            await srv.InsertUsuario(user);
+            */
+            /*
+             * 
             peso.Text = usuario.peso.ToString();
-
+                        */
+            
+            getUsuario();
 
         }
 
@@ -73,12 +106,12 @@ namespace FingerNationAppMacro.views
             Usuario user = new Usuario();
             try
             {
-                user.id = 1;
+                user.id = 2;
                 user.nombre = "BRAYAN ULISSES ARIAS PEREZ";
                 user.edad = int.Parse(edad.Text.ToString());
                 user.peso = double.Parse(peso.Text.ToString());
                 user.altura = double.Parse(altura.Text.ToString());
-                user.sexo = "Hombre";
+                user.sexo = "H";
                 await srv.InsertUsuario(user);
             }
             catch
