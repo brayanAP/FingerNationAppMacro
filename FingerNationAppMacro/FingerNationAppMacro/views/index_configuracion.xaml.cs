@@ -19,37 +19,50 @@ namespace FingerNationAppMacro.views
 		public  index_configuracion ()
 		{
 			InitializeComponent ();
-        
-                getUsuario();
-                
-            
-            
-            
+
+
+
         }
 
         public async void getUsuario()
-        {/*
+        {
             SrvFingerNation srv = new SrvFingerNation();
-            var temp = await srv.GetIdUsuario(1);
+            var temp = await srv.GetAllUsuario();
 
-            usuario = new Usuario()
+            if(temp!= null)
             {
-                id = temp.id,
-                nombre = temp.nombre,
-                edad = temp.edad,
-                peso = temp.peso,
-                altura = temp.altura,
-                sexo = temp.sexo
+                foreach (Usuario u in temp)
+                {
+                    if (u.nombre == "BRAYAN ULISSES ARIAS PEREZ")
+                    {
+                        usuario = new Usuario()
+                        {
+                            id = u.id,
+                            nombre = u.nombre,
+                            edad = u.edad,
+                            peso = u.peso,
+                            altura = u.altura,
+                            sexo = u.sexo
 
-            };*/
+                        };
+                    }
+                }
+            }
+            else
+            {
+                await DisplayAlert("ERROR", "USURIO NO ENCONTRADO", "OK");
+            }
+            
+            
         }
 
         protected async override void OnAppearing()
         {
-/*
-            edad.Text = usuario.edad + "";
-            altura.Text = usuario.altura + "";
-            peso.Text = usuario.peso + "";*/
+            /*
+                        */
+            getUsuario();
+            peso.Text = usuario.peso.ToString();
+
 
         }
 
@@ -63,10 +76,10 @@ namespace FingerNationAppMacro.views
                 user.id = 1;
                 user.nombre = "BRAYAN ULISSES ARIAS PEREZ";
                 user.edad = int.Parse(edad.Text.ToString());
-                user.peso = float.Parse(peso.Text.ToString());
-                user.altura = float.Parse(altura.Text.ToString());
+                user.peso = double.Parse(peso.Text.ToString());
+                user.altura = double.Parse(altura.Text.ToString());
                 user.sexo = "Hombre";
-
+                await srv.InsertUsuario(user);
             }
             catch
             {
@@ -74,7 +87,7 @@ namespace FingerNationAppMacro.views
             }
 
 
-            await srv.InsertUsuario(user);
+            
 
         }
 
