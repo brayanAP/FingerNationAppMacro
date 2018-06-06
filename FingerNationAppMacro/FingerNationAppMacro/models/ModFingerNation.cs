@@ -52,6 +52,7 @@ namespace FingerNationAppMacro.models
         public float proteinas { get; set; }
         public float carbohidratos { get; set; }
         public float grasas { get; set; }
+        public float calorias { get; set; }
     }
 
     public class Logros

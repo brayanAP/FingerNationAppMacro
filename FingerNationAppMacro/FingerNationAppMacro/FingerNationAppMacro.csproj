@@ -5,6 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microcharts" Version="0.7.1" />
+    <PackageReference Include="Microcharts.Forms" Version="0.7.1" />
     <PackageReference Include="sqlite-net-standard" Version="1.5.1" />
     <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="16.1.0.37" />
     <PackageReference Include="Syncfusion.Xamarin.SfPicker" Version="16.1.0.37" />

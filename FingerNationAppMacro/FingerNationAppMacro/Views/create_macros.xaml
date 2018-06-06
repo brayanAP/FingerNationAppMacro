@@ -6,22 +6,16 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Margin="20" Orientation="Vertical">
-                <Label Text="Edad:"></Label>
-                <Entry Keyboard="Numeric"></Entry>
                 <Label Text="Peso:"></Label>
-                <Entry Keyboard="Numeric"></Entry>
-                <Label Text="Estatura:"></Label>
-                <Entry Keyboard="Numeric"></Entry>
-                <Label Text="Sexo:"></Label>
-                <Picker x:Name="pickersexo"/>
+                <Entry x:Name="peso" Keyboard="Numeric"></Entry>
                 <Label Text="Dieta Objetivo:"></Label>
                 <Picker x:Name="pickerobjetivo"/>
                 <Label Text="Nivel de Actividad:"></Label>
                 <Picker x:Name="pickeractividad"/>
 
                 <StackLayout Orientation="Horizontal">
-                    <Button Text="Calcular"  Image="calculadora.png" BackgroundColor="#212121" TextColor="White" FontAttributes="Bold" FontSize="Large" />
-                    <Button Text="Cancelar"  Image="cancel.png" BackgroundColor="#212121" TextColor="White" FontAttributes="Bold" FontSize="Large"/>
+                    <Button Text="Calcular" Clicked="btn_ClickedSave"  Image="calculadora.png" BackgroundColor="#212121" TextColor="White" FontAttributes="Bold" FontSize="Large" />
+                    <Button Text="Cancelar" Clicked="Cancel"  Image="cancel.png" BackgroundColor="#212121" TextColor="White" FontAttributes="Bold" FontSize="Large"/>
                 </StackLayout>
 
             </StackLayout>

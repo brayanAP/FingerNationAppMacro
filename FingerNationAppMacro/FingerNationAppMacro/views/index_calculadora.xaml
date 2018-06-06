@@ -4,25 +4,25 @@
              x:Class="FingerNationAppMacro.views.index_calculadora">
     <ContentPage.Content>
         <StackLayout Margin="20">
-            <Image Source="mantener.png" HeightRequest="250"></Image>
-            <Label Text="■■ MANTENER TU PESO ACTUAL ■■" FontSize="Large" FontAttributes="Bold" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalTextAlignment="Center"></Label>
+            <Image x:Name="imagen" HeightRequest="250"></Image>
+            <Label x:Name="opcion" FontSize="Large" FontAttributes="Bold" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalTextAlignment="Center"></Label>
 
             <StackLayout Margin="20">
-                <Label Text="3000cal" FontSize="150" TextColor="Red" FontAttributes="Bold"  HorizontalOptions="CenterAndExpand"></Label>
+                <Label x:Name="calorias" Text="3000cal" FontSize="150" TextColor="Red" FontAttributes="Bold"  HorizontalOptions="CenterAndExpand"></Label>
             </StackLayout>
 
             <StackLayout Orientation="Horizontal">
                 <StackLayout HorizontalOptions="StartAndExpand">
                     <Image Source="proteinas.png" WidthRequest="100" HeightRequest="100"></Image>
-                    <Label Text="200gr" FontSize="Large" FontAttributes="Bold" TextColor="Black" HorizontalOptions="CenterAndExpand"></Label>
+                    <Label x:Name="proteinas" Text="200gr" FontSize="Large" FontAttributes="Bold" TextColor="Black" HorizontalOptions="CenterAndExpand"></Label>
                 </StackLayout>
                 <StackLayout HorizontalOptions="CenterAndExpand">
                     <Image Source="carbohidratos.png" WidthRequest="100" HeightRequest="100"></Image>
-                    <Label Text="200gr" FontSize="Large" FontAttributes="Bold" TextColor="Black" HorizontalOptions="CenterAndExpand"></Label>
+                    <Label x:Name="carbohidratos" Text="200gr" FontSize="Large" FontAttributes="Bold" TextColor="Black" HorizontalOptions="CenterAndExpand"></Label>
                 </StackLayout>
                 <StackLayout HorizontalOptions="EndAndExpand">
                     <Image Source="grasas.png" WidthRequest="100" HeightRequest="100"></Image>
-                    <Label Text="200gr" FontSize="Large" FontAttributes="Bold" TextColor="Black" HorizontalOptions="CenterAndExpand"></Label>
+                    <Label x:Name="grasas" Text="200gr" FontSize="Large" FontAttributes="Bold" TextColor="Black" HorizontalOptions="CenterAndExpand"></Label>
                 </StackLayout>
             </StackLayout>
 

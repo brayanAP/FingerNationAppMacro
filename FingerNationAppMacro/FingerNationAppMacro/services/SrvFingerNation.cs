@@ -36,28 +36,7 @@ namespace FingerNationAppMacro.services
                 await sqliteconnection.CreateTableAsync<ConteoConsumoDiaAlimento>(CreateFlags.None).ConfigureAwait(false);
 
 
-                var items = new Alimentos();
-
-                    var query = (from p in sqliteconnection.Table<Alimentos>()
-                                 where p.id == 1
-                                 select p);
-
-                    items = await query.FirstAsync();
-
-                if (items == null)
-                {
-                    Macronutrientes macros = new Macronutrientes()
-                    {
-                        id = 1,
-                        fecha = toTime().ToString(),
-                        meta = "none",
-                        proteinas = 0,
-                        carbohidratos = 0,
-                        grasas = 0
-                    };
-
-                    await sqliteconnection.InsertAsync(macros);
-                }
+               
                 
             }
         }//CreateDataBaseAsync
@@ -410,28 +389,56 @@ namespace FingerNationAppMacro.services
 
         public async Task InsertMacronutrientes(Macronutrientes item)
         {
-            item.id = 1;
-            await sqliteconnection.UpdateAsync(item).ConfigureAwait(false);
+            bool insertado = true;
+            var lista = await sqliteconnection.Table<Macronutrientes>().ToListAsync().ConfigureAwait(false);
+            var it = new Macronutrientes();
+
+            foreach (Macronutrientes a in lista)
+            {
+                if (a.fecha == item.fecha)
+                {
+                    insertado = false;
+                    it = a;
+                }
+            }
+
+            if (insertado)
+            {
+                await sqliteconnection.InsertAsync(item).ConfigureAwait(false);
+            }
+            else
+            {
+                item.id = it.id;
+                await sqliteconnection.UpdateAsync(item).ConfigureAwait(false);
+            }
         }
 
         public async Task InsertUsuario(Usuario item)
         {
-            using (await aMutex.LockAsync().ConfigureAwait(false))
-            {
-                var existingTodoItem = await sqliteconnection.Table<Usuario>()
-                        .Where(x => x.id == item.id)
-                        .FirstOrDefaultAsync();
 
-                if (item == null)
+            bool insertado = true;
+            var lista = await sqliteconnection.Table<Usuario>().ToListAsync().ConfigureAwait(false);
+            var it = new Usuario();
+
+            foreach (Usuario a in lista)
+            {
+                if (a.nombre == item.nombre)
                 {
-                    await sqliteconnection.InsertAsync(item).ConfigureAwait(false);
-                }
-                else
-                {
-                    item.id = item.id;
-                    await sqliteconnection.UpdateAsync(item).ConfigureAwait(false);
+                    insertado = false;
+                    it = a;
                 }
             }
+
+            if (insertado)
+            {
+                await sqliteconnection.InsertAsync(item).ConfigureAwait(false);
+            }
+            else
+            {
+                item.id = it.id;
+                await sqliteconnection.UpdateAsync(item).ConfigureAwait(false);
+            }
+
         }
         #endregion
     }
