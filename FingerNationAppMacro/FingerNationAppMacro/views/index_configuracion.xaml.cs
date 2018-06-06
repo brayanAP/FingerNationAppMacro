@@ -52,7 +52,7 @@ namespace FingerNationAppMacro.views
                                 sexo = u.sexo
 
                             };
-                            //await DisplayAlert("OK",usuario.id.ToString(),"ok");
+                            // await DisplayAlert("OK",usuario.id.ToString(),"ok");
                             edad.Text = usuario.edad.ToString();
                             peso.Text = usuario.peso.ToString();
                             altura.Text = usuario.altura.ToString();
