@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sync="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms" 
+             x:Class="FingerNationAppMacro.views.index_import">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="20">
+                <StackLayout Orientation="Horizontal" Margin="20">
+                    <Label HorizontalOptions="StartAndExpand" Text="Imp. Alimentos" FontSize="60" TextColor="Black"></Label>
+                    <Button Image="guardar.png" HorizontalOptions="EndAndExpand" Text="Importar" BackgroundColor="Blue" TextColor="White" FontAttributes="Bold" FontSize="Medium"></Button>
+                </StackLayout>
+                <sync:SfDataGrid x:Name="dataGrid" WidthRequest="500" SelectionMode="Single" >
+                    <sync:SfDataGrid.GroupColumnDescriptions>
+                        <sync:GroupColumnDescription ColumnName="Categoria" />
+                    </sync:SfDataGrid.GroupColumnDescriptions>
+                </sync:SfDataGrid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

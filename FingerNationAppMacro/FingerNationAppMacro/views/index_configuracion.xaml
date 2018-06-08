@@ -7,9 +7,9 @@
             <Label Text="BRAYAN ULISSES ARIAS PEREZ" HorizontalOptions="CenterAndExpand" FontSize="Large" TextColor="Red" FontAttributes="Bold" Margin="10"/>
             <Label Text="Edad:"></Label>
             <Entry x:Name="edad" Keyboard="Numeric"></Entry>
-            <Label Text="Altura:"></Label>
+            <Label Text="Altura(cm):"></Label>
             <Entry x:Name="altura" Keyboard="Numeric"></Entry>
-            <Label Text="Peso:"></Label>
+            <Label Text="Peso(Kg):"></Label>
             <Entry x:Name="peso" Keyboard="Numeric"></Entry>
 
             <Button Text="Guardar" Clicked="btn_ClickedSave" BackgroundColor="#212121" HeightRequest="60" TextColor="White" FontAttributes="Bold" FontSize="Large" />

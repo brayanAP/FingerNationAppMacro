@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sync="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms" 
+             x:Class="FingerNationAppMacro.views.index_dias">
+    <ScrollView>
+        <StackLayout Margin="20">
+            <StackLayout Orientation="Horizontal" Margin="20">
+                <Label HorizontalOptions="StartAndExpand" Text="Mi Dia" FontSize="60" TextColor="Black"></Label>
+                <Button Image="guardar.png" HorizontalOptions="EndAndExpand" Text="Terminar Dia" BackgroundColor="Blue" TextColor="White" FontAttributes="Bold" FontSize="Medium"></Button>
+                <Button Image="add.png" HorizontalOptions="EndAndExpand" Text="Agregar" BackgroundColor="Red" TextColor="White" FontAttributes="Bold" FontSize="Medium" Clicked="goCreateDiaInsert"></Button>
+            </StackLayout>
+            <sync:SfDataGrid x:Name="dataGrid" WidthRequest="500" SelectionMode="Single" >
+                <sync:SfDataGrid.GroupColumnDescriptions>
+                    <sync:GroupColumnDescription ColumnName="Comida" />
+                </sync:SfDataGrid.GroupColumnDescriptions>
+            </sync:SfDataGrid>
+            <StackLayout Orientation="Horizontal" Margin="20" HorizontalOptions="End">
+                <Button Image="edit.png" BackgroundColor="#212121" Clicked="Edit"></Button>
+                <Button Image="delete.png" BackgroundColor="#212121" Clicked="Delete"></Button>
+            </StackLayout>
+        </StackLayout>
+
+    </ScrollView>
+</ContentPage>

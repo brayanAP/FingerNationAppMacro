@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:autocomplete="clr-namespace:Syncfusion.SfAutoComplete.XForms;assembly=Syncfusion.SfAutoComplete.XForms"
+             x:Class="FingerNationAppMacro.views.create_dia">
+    <ContentPage.Content>
+        <StackLayout Margin="20">
+            <Label Text="Buscar Alimento:" WidthRequest="250"></Label>
+            <autocomplete:SfAutoComplete HeightRequest="40" x:Name="autoComplete"/>
+            <Label Text="Seleccione una comida::" WidthRequest="250"></Label>
+            <Picker x:Name="comida" ></Picker>
+            <Label Text="Cantidad(gr):" WidthRequest="250"></Label>
+            <Entry x:Name="cantidad" Placeholder="Cantidad en gramos..."/>
+            <Button Text="Guardar" BackgroundColor="#212121" TextColor="White" FontAttributes="Bold" Clicked="btn_ClickedSave"/>
+            <Button Text="Cancelar" BackgroundColor="#212121" TextColor="White" FontAttributes="Bold" Clicked="cancel"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,12 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms" 
              x:Class="FingerNationAppMacro.views.index">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView>
+            <StackLayout Margin="20">
+                <Label Text="DIARIO DE CALORIAS" FontSize="Large" FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="Center"></Label>
+                <microcharts:ChartView x:Name="tiempoCalorias" HeightRequest="400" HorizontalOptions="FillAndExpand"/>
+                <StackLayout Orientation="Horizontal">
+                    <StackLayout Orientation="Vertical">
+                        <Label Text="PROTEINAS:" FontSize="Large" FontAttributes="Bold" TextColor="Red" HorizontalOptions="Center"></Label>
+                        <microcharts:ChartView x:Name="proteinasG"  WidthRequest="200" HeightRequest="200" HorizontalOptions="StartAndExpand"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical">
+                        <Label Text="CARBOHIDRATOS:" FontSize="Large" FontAttributes="Bold" TextColor="Red" HorizontalOptions="Center"></Label>
+                        <microcharts:ChartView x:Name="carbohidratosG"  WidthRequest="200" HeightRequest="200" HorizontalOptions="CenterAndExpand"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical">
+                        <Label Text="GRASAS:" FontSize="Large" FontAttributes="Bold" TextColor="Red" HorizontalOptions="Center"></Label>
+                        <microcharts:ChartView x:Name="grasasG" WidthRequest="200"  HeightRequest="200" HorizontalOptions="EndAndExpand"/>
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

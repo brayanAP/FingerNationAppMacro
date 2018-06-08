@@ -25,7 +25,6 @@ namespace FingerNationAppMacro.views
             nombre.Text = a.nombre;
             calorias.Text = a.calorias + "";
             marca.Text = a.marca;
-            cantidad.Text = a.cantidad + "";
             carbohidratos.Text = a.carbohidratos + "";
             fibra.Text = a.fibra + "";
             azucar.Text = a.azucar + "";
@@ -83,7 +82,7 @@ namespace FingerNationAppMacro.views
                 alimento.nombre = nombre.Text.ToString().ToLower();
                 alimento.calorias = float.Parse(calorias.Text.ToString());
                 alimento.marca = marca.Text.ToString();
-                alimento.cantidad = int.Parse(cantidad.Text.ToString());
+                alimento.cantidad = 100;
                 alimento.unidadmedida = pickerumd.SelectedItem.ToString();
                 alimento.carbohidratos = float.Parse(carbohidratos.Text.ToString());
                 alimento.fibra = float.Parse(fibra.Text.ToString());
@@ -106,7 +105,6 @@ namespace FingerNationAppMacro.views
             nombre.Text = "";
             calorias.Text = "";
             marca.Text = "";
-            cantidad.Text = "";
             carbohidratos.Text = "";
             fibra.Text = "";
             azucar.Text = "";

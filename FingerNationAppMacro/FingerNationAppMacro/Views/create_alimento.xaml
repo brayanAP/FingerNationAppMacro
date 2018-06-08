@@ -18,9 +18,6 @@
                 <Label Text="Marca:" />
                 <Entry x:Name="marca" Text="{Binding Item.marca}"/>
 
-                <Label Text="Cantidad:" />
-                <Entry x:Name="cantidad" Text="{Binding Item.cantidad}"  Keyboard="Numeric"/>
-
                 <Label Text="Unidad de medida:" />
                 <Picker x:Name="pickerumd" SelectedItem="{Binding Item.unidadmedida}"/>
 

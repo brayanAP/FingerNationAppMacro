@@ -77,30 +77,34 @@ namespace FingerNationAppMacro.views
 
         protected async override void OnAppearing()
         {
-            /*
-            
-            
-            Usuario user = new Usuario();
-            user.id = 3;
-            user.nombre = "Edgar Eduardo Nuñez Gonzalez";
-            user.edad = 21;
-            user.altura = 45;
-            user.peso = 46;
-            user.sexo = "M";
-            await srv.DeleteUsuario(user);
-            await srv.InsertUsuario(user);
-            */
+
             /*
              * 
             peso.Text = usuario.peso.ToString();
+
+                      try { 
+
+                    SrvFingerNation srv = new SrvFingerNation();
+                    Usuario user = new Usuario();
+                    user.id = 3;
+                    user.nombre = "BRAYAN ULISSES ARIAS PEREZ";
+                    user.edad = 21;
+                    user.altura = 45;
+                    user.peso = 46;
+                    user.sexo = "M";
+
+                    await srv.InsertUsuario(user);
+                }
+                    catch (Exception e) { await DisplayAlert("OK", e.Message,"OK");
+            }
                         */
-            
+
             getUsuario();
 
         }
 
 
-         public async void guardarUsuario()
+        public async void guardarUsuario()
          {
             SrvFingerNation srv = new SrvFingerNation();
             Usuario user = new Usuario();

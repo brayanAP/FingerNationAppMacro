@@ -19,35 +19,14 @@ namespace FingerNationAppMacro.views
 		public index_calculadora ()
 		{
 			InitializeComponent ();
-            /*getMacros();
+            
 
-            calorias.Text = mcros.calorias+"cal";
-            proteinas.Text = mcros.proteinas+"gr";
-            grasas.Text = mcros.grasas+"gr";
-            carbohidratos.Text = mcros.carbohidratos+"gr";
+            
+        }
 
-            string obj = mcros.meta;
-
-            opcion.Text = "<< AUMENTAR PESO RAPIDO >>";
-
-            switch (obj)
-            {
-                case "Aumentar peso rápido":
-                    imagen.Source = "srapido.png";
-                    break;
-                case "Aumentar peso lentamente":
-                    imagen.Source = "slento.png";
-                    break;
-                case "Mantener mi peso actual":
-                    imagen.Source = "mantener.png";
-                    break;
-                case "Perder peso lentamente":
-                    imagen.Source = "blento.png";
-                    break;
-                case "Perder peso rápido":
-                    imagen.Source = "brapido.png";
-                    break;
-            }*/
+        protected async override void OnAppearing()
+        {
+            getMacros();
         }
 
         public async void getMacros()
@@ -55,17 +34,58 @@ namespace FingerNationAppMacro.views
             SrvFingerNation srv = new SrvFingerNation();
             var lista = await srv.GetAllMacronutrientes();
 
-            mcros = new Macronutrientes()
+            mcros = new Macronutrientes();
+
+            if(lista.Count != 0)
             {
-                id = lista[0].id,
-        fecha = lista[0].fecha,
-        meta = lista[0].meta,
-        proteinas = lista[0].proteinas,
-        carbohidratos = lista[0].carbohidratos,
-        grasas = lista[0].grasas,
-       calorias = lista[0].calorias
-    };
-        }
+                foreach(Macronutrientes m in lista)
+                {
+                    if(m.fecha == "OK")
+                    {
+                        mcros.id = m.id;
+                        mcros.meta = m.meta;
+                        mcros.proteinas = m.proteinas;
+                        mcros.calorias = m.calorias;
+                        mcros.proteinas = m.proteinas;
+                        mcros.carbohidratos = m.carbohidratos;
+                        mcros.grasas = m.grasas;
+                    }
+                }
+
+
+                calorias.Text = ((int)mcros.calorias) + "cal";
+                proteinas.Text = mcros.proteinas + "gr";
+                grasas.Text = mcros.grasas + "gr";
+                carbohidratos.Text = mcros.carbohidratos + "gr";
+
+                string obj = mcros.meta;
+
+                opcion.Text = "<"+mcros.meta+">";
+
+                switch (obj)
+                {
+                    case "Aumentar peso rápido":
+                        imagen.Source = "srapido.png";
+                        break;
+                    case "Aumentar peso lentamente":
+                        imagen.Source = "slento.png";
+                        break;
+                    case "Mantener mi peso actual":
+                        imagen.Source = "mantener.png";
+                        break;
+                    case "Perder peso lentamente":
+                        imagen.Source = "blento.png";
+                        break;
+                    case "Perder peso rápido":
+                        imagen.Source = "brapido.png";
+                        break;
+                }
+            }
+            else
+            {
+                await DisplayAlert("ERROR", "MACROS NO ENCONTRADO", "OK");
+            }
+        }//getMacros
 
         public void Create(object sender, EventArgs e)
         {

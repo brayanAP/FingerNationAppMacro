@@ -54,89 +54,112 @@ namespace FingerNationAppMacro.views
             Macronutrientes macro = new Macronutrientes();
             Usuario usuario = new Usuario();
 
-            var usu = await srv.GetIdUsuario(1);
+            var usu = await srv.GetAllUsuario();
             try
             {
-                /*DATOS USUARIO*/
-                usuario.id = usu.id;
-                usuario.nombre = usu.nombre;
-                usuario.edad = usu.edad;
-                usuario.altura = usu.altura;
-                usuario.peso = int.Parse(peso.Text.ToString());
-                usuario.sexo = usu.sexo;
-
-                /*GUARDAR CAMBIOS*/
-                await srv.InsertUsuario(usuario);
-
-                string actividad = pickeractividad.SelectedItem.ToString();
-                macro.id = 0;
-                macro.fecha = "OK";
-                macro.meta = pickerobjetivo.SelectedItem.ToString();
-
-                double caloriasVivir = 0;
-
-                if(usuario.sexo == "Hombre")
+                if (usu.Count != 0)
                 {
-                    caloriasVivir = (10 * usuario.peso) + (6.25 * usuario.altura) - (5 * usuario.edad) + 5;
+                    /*DATOS USUARIO*/
+                    foreach(Usuario t in usu)
+                    {
+                        if(t.nombre == "BRAYAN ULISSES ARIAS PEREZ")
+                        {
+                            usuario.id = t.id;
+                            usuario.nombre = t.nombre;
+                            usuario.edad = t.edad;
+                            usuario.altura = t.altura;
+                            if(peso.Text.Count() == 0)
+                            {
+                                usuario.peso = usuario.peso;
+                            }
+                            else
+                            {
+                                usuario.peso = int.Parse(peso.Text.ToString());
+                            }
+                            usuario.sexo = t.sexo;
+                        }
+                    }
+
+                    /*GUARDAR CAMBIOS*/
+                    await srv.InsertUsuario(usuario);
+
+                    string actividad = pickeractividad.SelectedItem.ToString();
+                    macro.id = 0;
+                    macro.fecha = "OK";
+                    macro.meta = pickerobjetivo.SelectedItem.ToString();
+
+                    double TMB = 0;
+
+                    if (usuario.sexo == "H")
+                    {
+                        //Hombres: TMB = 66 + [13,7 x peso (kg)] + [5 x altura (cm)] – [6,76 x edad (años)]
+                        TMB = 66 + (((13.7 * usuario.peso)+(5 * usuario.altura))-(6.76 * usuario.edad));
+                    }
+                    else
+                    {
+                        //Mujeres: TMB = 655 + [9,6 x peso (kg)] + [1,8 x altura (cm)] – [4,7 x edad (años)]
+                        TMB = 655+ (((9.6 * usuario.peso) + (1.8 * usuario.altura)) - (4.7 * usuario.edad));
+                    }
+
+                    switch (actividad)
+                    {
+                        case "Sedentario":
+                            TMB = TMB * 1.2;
+                            break;
+                        case "Actividad baja":
+                            TMB = TMB  * 1.375;
+                            break;
+                        case "Activo":
+                            TMB = TMB * 1.55;
+                            break;
+                        case "Muy Activo":
+                            TMB = TMB * 1.725;
+                            break;
+                    }
+
+
+                    double proteina = 2.2 * usuario.peso;
+                    double grasas = 0.9 * usuario.peso;
+
+                    double caloriasP = proteina * 4;
+                    double caloriasG = grasas * 9;
+
+                    double caloriasC = TMB - (caloriasP + caloriasG);
+                    double carbohidratos = (caloriasC / 4)*-1;
+
+                    double calorias = 0;
+
+                    switch (macro.meta)
+                    {
+                        case "Aumentar peso rápido":
+                            calorias = TMB + 800;
+                            break;
+                        case "Aumentar peso lentamente":
+                            calorias = TMB + 500;
+                            break;
+                        case "Mantener mi peso actual":
+                            calorias = TMB;
+                            break;
+                        case "Perder peso lentamente":
+                            calorias = TMB - 500;
+                            break;
+                        case "Perder peso rápido":
+                            calorias = TMB - 800;
+                            break;
+                    }
+
+                    macro.proteinas = (float)proteina;
+                    macro.grasas = (float)grasas;
+                    macro.carbohidratos = (float)carbohidratos;
+                    macro.calorias = (float)calorias;
+
                 }
                 else
                 {
-                    caloriasVivir = (10 * usuario.peso) + (6.25 * usuario.altura) - (5 * usuario.edad) - 161;
+                    await DisplayAlert("ERROR", "USURIO NO ENCONTRADO", "OK");
                 }
-
-                switch (actividad)
-                {
-                    case "Sedentario":
-                        caloriasVivir = caloriasVivir * 1.2;
-                        break;
-                    case "Actividad baja":
-                        caloriasVivir = caloriasVivir * 1.375;
-                        break;
-                    case "Activo":
-                        caloriasVivir = caloriasVivir * 1.55;
-                        break;
-                    case "Muy Activo":
-                        caloriasVivir = caloriasVivir * 1.725;
-                        break;
-                }
-                
-
-                double proteina = 2.2 * usuario.peso;
-                double grasas = 0.9 * usuario.peso;
-
-                double caloriasP = proteina * 4;
-                double caloriasG = grasas * 9;
-
-                double caloriasC = caloriasVivir - (caloriasP + caloriasG);
-                double carbohidratos = caloriasC / 4;
-
-                double calorias = 0;
-
-                switch (macro.meta)
-                {
-                    case "Aumentar peso rápido":
-                        calorias = caloriasVivir + 800;
-                        break;
-                    case "Aumentar peso lentamente":
-                        calorias = caloriasVivir + 500;
-                        break;
-                    case "Mantener mi peso actual":
-                        calorias = caloriasVivir;
-                        break;
-                    case "Perder peso lentamente":
-                        calorias = caloriasVivir - 500;
-                        break;
-                    case "Perder peso rápido":
-                        calorias = caloriasVivir - 800;
-                        break;
-                }
-
-                macro.proteinas = (float)proteina;
-                macro.grasas = (float)grasas;
-                macro.carbohidratos = (float)carbohidratos;
-                macro.calorias = (float)calorias;
-
             }
+
             catch
             {
                 await DisplayAlert("ERROR", "DATOS INCORRECTOS.", "OK");

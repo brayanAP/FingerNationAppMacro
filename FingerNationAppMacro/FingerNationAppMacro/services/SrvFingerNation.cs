@@ -27,25 +27,13 @@ namespace FingerNationAppMacro.services
         {
             using (await aMutex.LockAsync().ConfigureAwait(false))
             {
-                await sqliteconnection.CreateTableAsync<Categorias>(CreateFlags.None).ConfigureAwait(false);
                 await sqliteconnection.CreateTableAsync<Alimentos>(CreateFlags.None).ConfigureAwait(false);
                 await sqliteconnection.CreateTableAsync<Usuario>(CreateFlags.None).ConfigureAwait(false);
                 await sqliteconnection.CreateTableAsync<Macronutrientes>(CreateFlags.None).ConfigureAwait(false);
                 await sqliteconnection.CreateTableAsync<Logros>(CreateFlags.None).ConfigureAwait(false);
                 await sqliteconnection.CreateTableAsync<ConsumoDia>(CreateFlags.None).ConfigureAwait(false);
-                await sqliteconnection.CreateTableAsync<ConteoConsumoDiaAlimento>(CreateFlags.None).ConfigureAwait(false);
-
-
-               
-                
             }
         }//CreateDataBaseAsync
-
-        private DateTime toTime()
-        {
-            return new DateTime().ToLocalTime();
-        }
-
 
         #region DELETE
 
@@ -54,17 +42,7 @@ namespace FingerNationAppMacro.services
             await sqliteconnection.DeleteAsync(item);
         }
 
-        public async Task DeleteCategorias(Categorias item)
-        {
-            await sqliteconnection.DeleteAsync(item);
-        }
-
         public async Task DeleteConsumoDia(ConsumoDia item)
-        {
-            await sqliteconnection.DeleteAsync(item);
-        }
-
-        public async Task DeleteConteoConsumoDiaAlimento(ConteoConsumoDiaAlimento item)
         {
             await sqliteconnection.DeleteAsync(item);
         }
@@ -98,34 +76,12 @@ namespace FingerNationAppMacro.services
             return items;
         }
 
-        public async Task<IList<Categorias>> GetAllCategorias()
-        {
-            var items = new List<Categorias>();
-            using (await aMutex.LockAsync().ConfigureAwait(false))
-            {
-                items = await sqliteconnection.Table<Categorias>().ToListAsync().ConfigureAwait(false);
-            }
-
-            return items;
-        }
-
         public async Task<IList<ConsumoDia>> GetAllConsumoDia()
         {
             var items = new List<ConsumoDia>();
             using (await aMutex.LockAsync().ConfigureAwait(false))
             {
                 items = await sqliteconnection.Table<ConsumoDia>().ToListAsync().ConfigureAwait(false);
-            }
-
-            return items;
-        }
-
-        public async Task<IList<ConteoConsumoDiaAlimento>> GetAllConteoConsumoDiaAlimento()
-        {
-            var items = new List<ConteoConsumoDiaAlimento>();
-            using (await aMutex.LockAsync().ConfigureAwait(false))
-            {
-                items = await sqliteconnection.Table<ConteoConsumoDiaAlimento>().ToListAsync().ConfigureAwait(false);
             }
 
             return items;
@@ -182,43 +138,13 @@ namespace FingerNationAppMacro.services
             return items;
         }
 
-        public async Task<Categorias> GetIdCategorias(int id)
-        {
-            var items = new Categorias();
-            using (await aMutex.LockAsync().ConfigureAwait(false))
-            {
-                var query = (from p in sqliteconnection.Table<Categorias>()
-                             where p.id == id
-                             select p);
-
-                items = await query.FirstAsync();
-            }
-
-            return items;
-        }
-
         public async Task<ConsumoDia> GetIdConsumoDia(int id)
         {
             var items = new ConsumoDia();
             using (await aMutex.LockAsync().ConfigureAwait(false))
             {
                 var query = (from p in sqliteconnection.Table<ConsumoDia>()
-                             where p.id == id
-                             select p);
-
-                items = await query.FirstAsync();
-            }
-
-            return items;
-        }
-
-        public async Task<ConteoConsumoDiaAlimento> GetIdConteoConsumoDiaAlimento(int id)
-        {
-            var items = new ConteoConsumoDiaAlimento();
-            using (await aMutex.LockAsync().ConfigureAwait(false))
-            {
-                var query = (from p in sqliteconnection.Table<ConteoConsumoDiaAlimento>()
-                             where p.id == id
+                             where p.Id == id
                              select p);
 
                 items = await query.FirstAsync();
@@ -306,67 +232,31 @@ namespace FingerNationAppMacro.services
                 }
             
         }
-            
-        public async Task InsertCategorias(Categorias item)
-        {
-            using (await aMutex.LockAsync().ConfigureAwait(false))
-            {
-                var existingTodoItem = await sqliteconnection.Table<Categorias>()
-                        .Where(x => x.nombre == item.nombre)
-                        .FirstOrDefaultAsync();
-
-                if (item == null)
-                {
-                    await sqliteconnection.InsertAsync(item).ConfigureAwait(false);
-                }
-                else
-                {
-                    item.id = item.id;
-                    await sqliteconnection.UpdateAsync(item).ConfigureAwait(false);
-                }
-            }
-        }
-
         public async Task InsertConsumoDia(ConsumoDia item)
         {
-            using (await aMutex.LockAsync().ConfigureAwait(false))
-            {
-                var existingTodoItem = await sqliteconnection.Table<ConsumoDia>()
-                        .Where(x => x.id == item.id)
-                        .FirstOrDefaultAsync();
+            bool insertado = true;
+            var lista = await sqliteconnection.Table<ConsumoDia>().ToListAsync().ConfigureAwait(false);
+            var it = new ConsumoDia();
 
-                if (item == null)
+            foreach (ConsumoDia a in lista)
+            {
+                if (a.Alimento == item.Alimento)
                 {
-                    await sqliteconnection.InsertAsync(item).ConfigureAwait(false);
-                }
-                else
-                {
-                    item.id = item.id;
-                    await sqliteconnection.UpdateAsync(item).ConfigureAwait(false);
+                    insertado = false;
+                    it = a;
                 }
             }
-        }
 
-        public async Task InsertConteoConsumoDiaAlimento(ConteoConsumoDiaAlimento item)
-        {
-            using (await aMutex.LockAsync().ConfigureAwait(false))
+            if (insertado)
             {
-                var existingTodoItem = await sqliteconnection.Table<ConteoConsumoDiaAlimento>()
-                        .Where(x => x.id == item.id)
-                        .FirstOrDefaultAsync();
-
-                if (item == null)
-                {
-                    await sqliteconnection.InsertAsync(item).ConfigureAwait(false);
-                }
-                else
-                {
-                    item.id = item.id;
-                    await sqliteconnection.UpdateAsync(item).ConfigureAwait(false);
-                }
+                await sqliteconnection.InsertAsync(item).ConfigureAwait(false);
+            }
+            else
+            {
+                item.Id = it.Id;
+                await sqliteconnection.UpdateAsync(item).ConfigureAwait(false);
             }
         }
-
         public async Task InsertLogros(Logros item)
         {
             using (await aMutex.LockAsync().ConfigureAwait(false))
@@ -386,7 +276,6 @@ namespace FingerNationAppMacro.services
                 }
             }
         }
-
         public async Task InsertMacronutrientes(Macronutrientes item)
         {
             bool insertado = true;
@@ -395,7 +284,7 @@ namespace FingerNationAppMacro.services
 
             foreach (Macronutrientes a in lista)
             {
-                if (a.fecha == item.fecha)
+                if (a.fecha == "OK")
                 {
                     insertado = false;
                     it = a;
@@ -412,7 +301,6 @@ namespace FingerNationAppMacro.services
                 await sqliteconnection.UpdateAsync(item).ConfigureAwait(false);
             }
         }
-
         public async Task InsertUsuario(Usuario item)
         {
 

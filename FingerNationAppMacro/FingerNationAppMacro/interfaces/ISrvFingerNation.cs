@@ -8,11 +8,6 @@ namespace FingerNationAppMacro.interfaces
 {
     public interface ISrvFingerNation
     {
-        //CRUD CATEGORIAS
-        Task<IList<Categorias>> GetAllCategorias();
-        Task InsertCategorias(Categorias item);
-        Task DeleteCategorias(Categorias item);
-        Task<Categorias> GetIdCategorias(int id);
 
         //CRUD ALIMENTOS
         Task<IList<Alimentos>> GetAllAlimentos();
@@ -43,12 +38,6 @@ namespace FingerNationAppMacro.interfaces
         Task InsertConsumoDia(ConsumoDia item);
         Task DeleteConsumoDia(ConsumoDia item);
         Task<ConsumoDia> GetIdConsumoDia(int id);
-
-        //CRUD CONTEO CONSUMO DIA ALIMENTO
-        Task<IList<ConteoConsumoDiaAlimento>> GetAllConteoConsumoDiaAlimento();
-        Task InsertConteoConsumoDiaAlimento(ConteoConsumoDiaAlimento item);
-        Task DeleteConteoConsumoDiaAlimento(ConteoConsumoDiaAlimento item);
-        Task<ConteoConsumoDiaAlimento> GetIdConteoConsumoDiaAlimento(int id);
 
     }
 }

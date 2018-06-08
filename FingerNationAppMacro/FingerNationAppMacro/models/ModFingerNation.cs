@@ -4,13 +4,6 @@ using System.Text;
 
 namespace FingerNationAppMacro.models
 {
-    public class Categorias
-    {
-        [PrimaryKey, AutoIncrement]
-        public int id { get; set; }
-        public string nombre { get; set; }
-    }
-
     public class Alimentos
     {
         [PrimaryKey, AutoIncrement]
@@ -67,17 +60,16 @@ namespace FingerNationAppMacro.models
     public class ConsumoDia
     {
         [PrimaryKey, AutoIncrement]
-        public int id { get; set; }
-        public string fecha { get; set; }
-        public float calorias { get; set; }
+        public int Id { get; set; }
+        public string Alimento { get; set; }
+        public int Cantidad { get; set; }
+        public double Calorias { get; set; }
+        public double Proteina { get; set; }
+        public double Grasa { get; set; }
+        public double Carbohidratos { get; set; }
+        public string Comida { get; set; }
+        public string Fecha { get; set; }
+        public string Terminado { get; set; }
     }
 
-    public class ConteoConsumoDiaAlimento
-    {
-        [PrimaryKey, AutoIncrement]
-        public int id { get; set; }
-        public int idDia { get; set; }
-        public int idAlimento { get; set; }
-        public string comida { get; set; }
-    }
 }

@@ -27,7 +27,14 @@ namespace FingerNationAppMacro
                 Icon = "home.png",
                 TargetType = typeof(views.index)
         });
-        menuList.Add(new MasterPageItem()
+            menuList.Add(new MasterPageItem()
+            {
+                Title = "Mi Dia",
+                Icon = "add.png",
+                TargetType = typeof(views.index_dias)
+
+            });
+            menuList.Add(new MasterPageItem()
         {
             Title = "Mis alimentos",
             Icon = "alimentos.png",
@@ -52,6 +59,13 @@ namespace FingerNationAppMacro
                 TargetType = typeof(views.index_configuracion)
             
         });
+            menuList.Add(new MasterPageItem()
+            {
+                Title = "Importar Alimentos",
+                Icon = "configuracion.png",
+                TargetType = typeof(views.index_import)
+
+            });
 
             // Setting our list to be ItemSource for ListView in MainPage.xaml  
             navigationDrawerList.ItemsSource = menuList;
